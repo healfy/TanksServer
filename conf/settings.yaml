@@ -1,0 +1,8 @@
+MODE: "local"
+HOST: "0.0.0.0"
+PORT: 50051
+DB:
+  HOST: "127.0.0.1:9200"
+  DATABASE: "tanks"
+  PASSWORD: ""
+  USER: "postgres"

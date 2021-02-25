@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package tantks;
+
+// AccountsService server
+service TankService {
+  rpc Healthz(HealthzRequest) returns (HealthzResponse) {};
+  rpc StartGame(StartGameReq) returns (GameResp) {};
+  rpc RunCommands(CommandsReq) returns (GameResp) {};
+}
+
+enum ResponseStatus {
+	NOT_SET = 0;
+	SUCCESS = 1;
+	ERROR = 2;
+	INVALID_REQUEST = 3;
+}
+
+message ResponseHeader {
+	ResponseStatus status = 1;
+	string description = 2;
+}
+
+message HealthzRequest {};
+
+message HealthzResponse {
+	ResponseHeader header = 1;
+}
+
+message StartGameReq {
+	string username = 1;
+}
+
+
+message Command {
+	string name = 1;
+}
+
+message CommandsReq {
+	string username = 1;
+	repeated Command commands = 2;
+}
+
+message GameResp {
+	ResponseHeader header = 1;
+}
